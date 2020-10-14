@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+h1 {text-align: center;}
+p {text-align: center;}
+div {text-align: center;}
+</style>
+</head>
+<body style="background-color:lavender;">
+
+<form method="post" action="/animes/<%= @anime.id %>">
+    Anime:
+    <input type="text" name="anime"><br>
+
+ <label for="status">Status:</label>
+
+<select name="status" id="status">
+  <option value="completed">Completed</option>
+  <option value="on_hold">On-Hold</option>
+  <option value="dropped">Dropped</option>
+  <option value="currently_watching">Currently Watching</option>
+
+</select><br>
+
+ <label for="rating">Rating:</label>
+
+<select name="rating" id="rating">
+  <option value="10">10 (Masterpiece)</option>
+  <option value="9">9 (Great)</option>
+  <option value="8">8 (Very Good)</option>
+  <option value="7">7 (Good)</option>
+  <option value="6">6 (Fine)</option>
+  <option value="5">5 (Average)</option>
+  <option value="4">4 (Bad)</option>
+  <option value="3">3 (Very Bad)</option>
+  <option value="2">2 (Horrible)</option>
+  <option value="1">1 (Appalling)</option>
+
+</select><br>
+
+    Edit Your Anime:
+
+    <input type="submit" value="edit">
+
+  </form>
+  <a href="/animes/<%=@anime.id%>">Back</a>
+  </body>
+  </html>

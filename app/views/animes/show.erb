@@ -1,0 +1,8 @@
+<h3><%= @anime.user.username%></h3>
+
+  <form method="post" action="/animes/<%=@anime.id%>">
+<input id="hidden" type="hidden" name="_method" value="delete">
+    <input type="submit" value="Delete Anime">
+  </form>
+  <br>
+  <a href="/animes/<%=@anime.id%>/edit">Edit Anime</a>

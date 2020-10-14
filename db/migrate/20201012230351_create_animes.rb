@@ -3,6 +3,7 @@ class CreateAnimes < ActiveRecord::Migration
       create_table :animes do |t|
         t.string :name 
         t.integer :user_id 
+        t.string :status 
     end
   end
 end 
