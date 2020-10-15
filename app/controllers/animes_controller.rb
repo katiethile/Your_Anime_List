@@ -21,8 +21,9 @@ class AnimesController < ApplicationController
     end 
 
     post '/animes' do 
-        @anime = Anime.create(:name => params[:name], :status => params[:status], :user_id => current_user.id)
-        if is_logged_in? && user.anime.status == currently_watching && user.anime.status == dropped && user.anime.status == completed && user.anime.status == on_hold
+       # binding.pry
+        if is_logged_in?
+            @anime = Anime.create(:name => params[:name], :status => params[:status], :user_id => current_user.id)
              redirect to "/animes/#{@anime.id}"
         else
             redirect '/animes/new'

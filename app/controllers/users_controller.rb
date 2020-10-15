@@ -36,8 +36,10 @@ class UsersController < ApplicationController
         if user && user.authenticate(params[:password])
           session[:user_id] = user.id
           redirect to "/animes"
-        end 
+    else 
+        redirect 'login'
     end 
+end 
 
     get '/logout' do
         session.clear
