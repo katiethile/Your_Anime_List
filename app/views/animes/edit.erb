@@ -22,37 +22,38 @@ div {text-align: center;}
 
 <select name="status" id="status" value="<%=@anime.status%>">
 
- <% if @anime.status == "on_hold" %>
-<option value="Completed">Completed</option>
- <option value="On-Hold" selected>On-Hold</option>
+ <% if @anime.status == "On-Hold" %>
+   <option value="On-Hold" selected>On-Hold</option>
+ <option value="Completed">Completed</option>
   <option value="Dropped">Dropped</option>
   <option value="Currently Watching">Currently Watching</option>
-  <% elsif  @anime.status == "completed" %>
+
+  <% elsif  @anime.status == "Completed" %>
 
 <option value="Completed" selected>Completed</option>
- <option value="On-Hold" >On-Hold</option>
+  <option value="On-Hold">On-Hold</option>
   <option value="Dropped">Dropped</option>
   <option value="Currently Watching">Currently Watching</option>
 
-  <% elsif @anime.status == "dropped"%>
+  <% elsif @anime.status == "Dropped"%>
 
-<option value="Dropped" selected>Dropped</option>
-  <option value="Completed">Completed</option>
- <option value="On-hold">On-Hold</option>
+  <option value="Dropped" selected>Dropped</option>
+<option value="Completed">Completed</option>
+  <option value="On-Hold">On-Hold</option>
   <option value="Currently Watching">Currently Watching</option>
 
-  <% elsif @anime.status == "currently_watching" %>
+  <% elsif @anime.status == "Currently Watching" %>
 
- <option value="Currently Watching" selected>Currently Watching</option>
-<option value="Dropped">Dropped</option>
-  <option value="Completed">Completed</option>
- <option value="On-Hold">On-Hold</option>
+  <option value="Currently Watching" selected>Currently Watching</option>
+ <option value="Completed">Completed</option>
+  <option value="On-Hold">On-Hold</option>
+  <option value="Dropped">Dropped</option>
 
  <% end %>
 
   </select><br>
 
- <label for="rating">Rating:</label>
+  <label for="rating">Rating:</label>
 
 <%
 options = [
@@ -75,6 +76,8 @@ options = [
 <% end %>
 </select><br>
 
+
+ 
     Edit Your Anime:
 
     <input type="submit" value="edit">

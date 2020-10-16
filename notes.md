@@ -30,3 +30,6 @@ Show page:
 Edit page:
 -Here, you will get to edit the specific anime you want to edit
 
+
+
+
