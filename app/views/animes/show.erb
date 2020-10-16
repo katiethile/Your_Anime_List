@@ -1,4 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+h1 {text-align: center;}
+p {text-align: center;}
+div {text-align: center;}
+</style>
+</head>
+<body style="background-color:lavender;">
+
 <h2><p>Hello, <%= current_user.username %></p></h2>
+
+<img src="https://pa1.narvii.com/6304/8a03ef0b76ee40b008454a24bc312848759b70aa_hq.gif" alt="come_here_anime_gif">
+
 <h2>Anime Details:</h2>
 <h5>Anime Name:<%= @anime.name%></h5>
 <h5>Anime Rating:<%= @anime.rating %></h5>
@@ -11,3 +25,5 @@
   <br>
   <a href="/animes/<%=@anime.id%>/edit">Edit Anime</a><br>
       <a href="/animes">Back</a>
+</body>
+</html>
