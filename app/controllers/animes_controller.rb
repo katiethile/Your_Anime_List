@@ -2,7 +2,6 @@ class AnimesController < ApplicationController
 
     get '/animes' do 
         if is_logged_in?
-            #binding.pry
             @user = current_user
             @animes = @user.animes
             erb :'animes/index'
@@ -22,7 +21,6 @@ class AnimesController < ApplicationController
     end 
 
     post '/animes' do 
-       # binding.pry
         if is_logged_in?
             @anime = Anime.create(:name => params[:name], :status => params[:status], :rating => params[:rating])
             @anime.user = current_user
@@ -34,7 +32,6 @@ class AnimesController < ApplicationController
     end 
 
     get '/animes/:id' do 
-        #binding.pry
         @anime = Anime.find_by_id(params[:id])
         if is_logged_in?
             erb :'animes/show'
