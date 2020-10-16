@@ -1,8 +1,13 @@
-<h3><%= @anime.user.username%></h3>
+<h2><p>Hello, <%= current_user.username %></p></h2>
+<h2>Anime Details:</h2>
+<h5>Anime Name:<%= @anime.name%></h5>
+<h5>Anime Rating:<%= @anime.rating %></h5>
+<h5>Anime Watch Status:<%= @anime.status %></h5>
 
   <form method="post" action="/animes/<%=@anime.id%>">
 <input id="hidden" type="hidden" name="_method" value="delete">
     <input type="submit" value="Delete Anime">
   </form>
   <br>
-  <a href="/animes/<%=@anime.id%>/edit">Edit Anime</a>
+  <a href="/animes/<%=@anime.id%>/edit">Edit Anime</a><br>
+      <a href="/animes">Back</a>

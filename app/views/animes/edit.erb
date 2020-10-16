@@ -9,27 +9,60 @@ div {text-align: center;}
 </head>
 <body style="background-color:lavender;">
 
-<h3><p style="border:3px; border-style:solid; border-color:#8EEBEC; padding: 1em;">Oopsies! A mistake was made.</p></h3>
+<h3><p style="border:3px; border-style:solid; border-color:#8EEBEC; padding: 1em;">Oopsies! A mistake was made. Time to edit!</p></h3>
 
 <img src="https://media1.tenor.com/images/d3db2251496c034939206aedeb304386/tenor.gif?itemid=5827691" alt="dizzy_anime_gif">
 
 <form method="post" action="/animes/<%= @anime.id %>">
+<input type="hidden" id="hidden" name="_method" value="patch">
     Anime:
-    <input type="text" name="anime"><br>
+    <input type="text" name="name" value="<%=@anime.name%>"><br>
 
  <label for="status">Status:</label>
 
-<select name="status" id="status">
-  <option value="completed">Completed</option>
-  <option value="on_hold">On-Hold</option>
+<select name="status" id="status" value="<%=@anime.status%>">
+
+ <% if @anime.status == "on_hold" %>
+ <option value="on_hold">On-Hold</option>
+<option value="completed">Completed</option>
+  <option value="dropped">Dropped</option>
+  <option value="currently_watching">Currently Watching</option>
+  <% elsif  @anime.status == "completed" %>
+
+<option value="completed">Completed</option>
+ <option value="on_hold" >On-Hold</option>
   <option value="dropped">Dropped</option>
   <option value="currently_watching">Currently Watching</option>
 
-</select><br>
+  <% elsif @anime.status == "dropped"%>
+
+<option value="dropped">Dropped</option>
+  <option value="completed">Completed</option>
+ <option value="on_hold">On-Hold</option>
+  <option value="currently_watching">Currently Watching</option>
+
+  <% elsif @anime.status == "currently_watching" %>
+
+ <option value="currently_watching">Currently Watching</option>
+<option value="dropped">Dropped</option>
+  <option value="completed">Completed</option>
+ <option value="on_hold">On-Hold</option>
+
+  
+
+ <% end %>
+
+
+
+  </select><br>
+  
+
+
+
 
  <label for="rating">Rating:</label>
 
-<select name="rating" id="rating">
+<select name="rating" id="rating" value="<%=@anime.rating%>">
   <option value="10">10 (Masterpiece)</option>
   <option value="9">9 (Great)</option>
   <option value="8">8 (Very Good)</option>

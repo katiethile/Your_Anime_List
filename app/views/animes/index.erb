@@ -9,16 +9,19 @@ div {text-align: center;}
 </head>
 <body style="background-color:lavender;">
 
-
-<h1>Welcome, <%=@user.username%></h1>
+<h1>Hello, <%=@user.username%></h1>
 
 <% @animes.each do |anime| %>
-  <p><%= anime.name %></p>
+  <%= anime.name %>
   <a href="/animes/<%=anime.id%>">View anime</a>
-  <% end %>
+  (<%=anime.status%>)
+  (<%=anime.rating%>)
+  <br>
 
-<a href="/animes/new">New Anime</a>
- <a href="/logout">Log Out</a>
+    <% end %>
+
+<a href="/animes/new">New Anime</a><br>
+ <a href="/logout">Log Out</a><br>
 
  </body>
  </html>

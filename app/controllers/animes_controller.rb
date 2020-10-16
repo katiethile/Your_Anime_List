@@ -2,8 +2,9 @@ class AnimesController < ApplicationController
 
     get '/animes' do 
         if is_logged_in?
+            #binding.pry
             @user = current_user
-            @animes = Anime.all 
+            @animes = @user.animes
             erb :'animes/index'
         else 
             redirect '/login'
@@ -23,7 +24,9 @@ class AnimesController < ApplicationController
     post '/animes' do 
        # binding.pry
         if is_logged_in?
-            @anime = Anime.create(:name => params[:name], :status => params[:status], :user_id => current_user.id)
+            @anime = Anime.create(:name => params[:name], :status => params[:status], :rating => params[:rating])
+            @anime.user = current_user
+            @anime.save
              redirect to "/animes/#{@anime.id}"
         else
             redirect '/animes/new'
@@ -31,6 +34,7 @@ class AnimesController < ApplicationController
     end 
 
     get '/animes/:id' do 
+        #binding.pry
         @anime = Anime.find_by_id(params[:id])
         if is_logged_in?
             erb :'animes/show'
@@ -49,13 +53,17 @@ class AnimesController < ApplicationController
     end 
 
     patch '/animes/:id' do 
+        @anime = Anime.find_by_id(params[:id])
+        if current_user == @anime.user
+            @anime.update(params.except(:_method, :id))
+        redirect to '/animes'
+        end 
     end 
 
     delete '/animes/:id' do
-        id = params[:id]
         @anime = Anime.find_by_id(params[:id])
         if current_user == @anime.user
-            @anime.destroy 
+            @anime.delete
         redirect to '/animes'
         end 
     end 
