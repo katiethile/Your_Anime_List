@@ -23,30 +23,30 @@ div {text-align: center;}
 <select name="status" id="status" value="<%=@anime.status%>">
 
  <% if @anime.status == "on_hold" %>
-<option value="completed">Completed</option>
- <option value="on_hold" selected>On-Hold</option>
-  <option value="dropped">Dropped</option>
-  <option value="currently_watching">Currently Watching</option>
+<option value="Completed">Completed</option>
+ <option value="On-Hold" selected>On-Hold</option>
+  <option value="Dropped">Dropped</option>
+  <option value="Currently Watching">Currently Watching</option>
   <% elsif  @anime.status == "completed" %>
 
-<option value="completed" selected>Completed</option>
- <option value="On-hold" >On-Hold</option>
-  <option value="dropped">Dropped</option>
-  <option value="currently_watching">Currently Watching</option>
+<option value="Completed" selected>Completed</option>
+ <option value="On-Hold" >On-Hold</option>
+  <option value="Dropped">Dropped</option>
+  <option value="Currently Watching">Currently Watching</option>
 
   <% elsif @anime.status == "dropped"%>
 
-<option value="dropped" selected>Dropped</option>
-  <option value="completed">Completed</option>
- <option value="on_hold">On-Hold</option>
-  <option value="currently_watching">Currently Watching</option>
+<option value="Dropped" selected>Dropped</option>
+  <option value="Completed">Completed</option>
+ <option value="On-hold">On-Hold</option>
+  <option value="Currently Watching">Currently Watching</option>
 
   <% elsif @anime.status == "currently_watching" %>
 
- <option value="currently_watching" selected>Currently Watching</option>
-<option value="dropped">Dropped</option>
-  <option value="completed">Completed</option>
- <option value="on_hold">On-Hold</option>
+ <option value="Currently Watching" selected>Currently Watching</option>
+<option value="Dropped">Dropped</option>
+  <option value="Completed">Completed</option>
+ <option value="On-Hold">On-Hold</option>
 
  <% end %>
 
@@ -54,18 +54,25 @@ div {text-align: center;}
 
  <label for="rating">Rating:</label>
 
-<select name="rating" id="rating" value="<%=@anime.rating%>">
-  <option value="10"<%=@tenselect%>>10 (Masterpiece)</option>
-  <option value="9"<%=@nineselect%>>9 (Great)</option>
-  <option value="8"<%=@eightselect%>>8 (Very Good)</option>
-  <option value="7"<%=@sevenselect%>>7 (Good)</option>
-  <option value="6"<%=@sixselect%>>6 (Fine)</option>
-  <option value="5"<%=@fiveselect%>>5 (Average)</option>
-  <option value="4"<%=@fourselect%>>4 (Bad)</option>
-  <option value="3"<%=@threeselect%>>3 (Very Bad)</option>
-  <option value="2"<%=@twoselect%>>2 (Horrible)</option>
-  <option value="1"<%=@oneselect%>>1 (Appalling)</option>
+<%
+options = [
+  [10, '10 (Masterpiece)'],
+  [9, '9 (Great)'],
+  [8, '8 (Very Good)'],
+  [7, '7 (Good)'],
+  [6, '6 (Fine)'],
+  [5, '5 (Average)'],
+  [4, '4 (Bad)'],
+  [3, '3 (Very Bad)'],
+  [2, '2 (Horrible)'],
+  [1, '1 (Appalling)']
+]
+%>
 
+<select name="rating" id="rating" value="<%= @anime.rating %>">
+<% options.each do |option| %>
+  <option value="<%= option[0].to_s %>"<%= @anime.rating == option[0] ? ' selected' : '' %>><%= option[1] %></option>
+<% end %>
 </select><br>
 
     Edit Your Anime:
