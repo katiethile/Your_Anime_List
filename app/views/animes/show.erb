@@ -14,9 +14,9 @@ div {text-align: center;}
 <img src="https://pm1.narvii.com/6333/0145f5ad4a9977bbfa4a81e0f2c136e777eb4384_hq.jpg" alt="wow_anime_gif" width="300">
 
 <h2>Anime Details:</h2>
-<h5>Anime Name:<%= @anime.name%></h5>
-<h5>Anime Rating:<%= @anime.rating %></h5>
-<h5>Anime Watch Status:<%= @anime.status %></h5>
+<h5>Anime Name: <%= @anime.name%></h5>
+<h5>Anime Rating: <%= @anime.rating %></h5>
+<h5>Anime Watch Status: <%= @anime.status %></h5>
 
   <form method="post" action="/animes/<%=@anime.id%>">
 <input id="hidden" type="hidden" name="_method" value="delete">
@@ -24,6 +24,6 @@ div {text-align: center;}
   </form>
   <br>
   <a href="/animes/<%=@anime.id%>/edit">Edit Anime</a><br>
-      <a href="/animes">Back</a>
+      <a href="/animes">Previous</a>
 </body>
 </html>

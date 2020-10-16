@@ -1,14 +1,10 @@
 class UsersController < ApplicationController
 
-    get '/' do  
-        erb :index
-    end
-
     get '/signup' do 
         if is_logged_in?
             redirect to '/animes'
         else 
-        erb :'users/signup'
+            erb :'users/signup'
         end 
     end 
 
@@ -46,9 +42,3 @@ end
         redirect to '/'
     end
 end 
-
-    # get '/users/:slug' do 
-    #    # user = slug
-    #     @animes = user.animes
-    #     erb :'users/show'
-    # end 

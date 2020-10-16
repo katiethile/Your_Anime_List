@@ -23,42 +23,34 @@ div {text-align: center;}
 <select name="status" id="status" value="<%=@anime.status%>">
 
  <% if @anime.status == "on_hold" %>
- <option value="on_hold">On-Hold</option>
 <option value="completed">Completed</option>
+ <option value="on_hold" selected>On-Hold</option>
   <option value="dropped">Dropped</option>
   <option value="currently_watching">Currently Watching</option>
   <% elsif  @anime.status == "completed" %>
 
-<option value="completed">Completed</option>
- <option value="on_hold" >On-Hold</option>
+<option value="completed" selected>Completed</option>
+ <option value="On-hold" >On-Hold</option>
   <option value="dropped">Dropped</option>
   <option value="currently_watching">Currently Watching</option>
 
   <% elsif @anime.status == "dropped"%>
 
-<option value="dropped">Dropped</option>
+<option value="dropped" selected>Dropped</option>
   <option value="completed">Completed</option>
  <option value="on_hold">On-Hold</option>
   <option value="currently_watching">Currently Watching</option>
 
   <% elsif @anime.status == "currently_watching" %>
 
- <option value="currently_watching">Currently Watching</option>
+ <option value="currently_watching" selected>Currently Watching</option>
 <option value="dropped">Dropped</option>
   <option value="completed">Completed</option>
  <option value="on_hold">On-Hold</option>
 
-  
-
  <% end %>
 
-
-
   </select><br>
-  
-
-
-
 
  <label for="rating">Rating:</label>
 
@@ -81,6 +73,6 @@ div {text-align: center;}
     <input type="submit" value="edit">
 
   </form>
-  <a href="/animes/<%=@anime.id%>">Back</a>
+  <a href="/animes/<%=@anime.id%>">Previous</a>
   </body>
   </html>

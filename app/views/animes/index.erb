@@ -10,12 +10,13 @@ div {text-align: center;}
 <body style="background-color:lavender;">
 
 <h1>Hello, <%=@user.username%></h1>
+<h3>Your Anime List!</h3>
 
 <% @animes.each do |anime| %>
   <%= anime.name %>
   <a href="/animes/<%=anime.id%>">View anime</a>
-  (<%=anime.status%>)
-  (<%=anime.rating%>)
+  (Watch Status: <%=anime.status%>)
+  (Rating: <%=anime.rating%>)
   <br>
 
     <% end %>
