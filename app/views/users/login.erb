@@ -10,6 +10,8 @@ div {text-align: center;}
 <body style="background-color:lavender;">
 
 <h1>Log in to Your Anime List!</h1>
+            <%= @error%><br>
+
 <form action="/login" method="POST">
   <label>Username: </label>
   <input type="text" name="username"><br>

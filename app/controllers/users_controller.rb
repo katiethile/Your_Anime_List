@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+    
 
     get '/signup' do 
         if is_logged_in?
@@ -14,14 +15,15 @@ class UsersController < ApplicationController
           session[:user_id] = user.id
           redirect to "/animes"
         else
-          redirect to '/signup'
+            @error = "You inputted invalid fields for username, email and password"
+          erb :'users/signup'
         end
     end
 
     get '/login' do 
         if is_logged_in?
             redirect to '/animes'
-        else 
+        else
         erb :'users/login' 
         end
     end
@@ -32,7 +34,8 @@ class UsersController < ApplicationController
           session[:user_id] = user.id
           redirect to "/animes"
     else 
-        redirect 'login'
+        @error = "You inputted invalid fields for username or password"
+        erb :'users/login'
     end 
 end 
 

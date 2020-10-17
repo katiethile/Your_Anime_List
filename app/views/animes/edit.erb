@@ -72,7 +72,7 @@ options = [
 
 <select name="rating" id="rating" value="<%= @anime.rating %>">
 <% options.each do |option| %>
-  <option value="<%= option[0].to_s %>"<%= @anime.rating == option[0] ? ' selected' : '' %>><%= option[1] %></option>
+  <option value="<%= option[0].to_s %>"<%= @anime.rating == option[0] ? ' selected' : '' %> ><%= option[1] %></option>
 <% end %>
 </select><br>
 

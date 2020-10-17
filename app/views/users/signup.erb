@@ -9,8 +9,13 @@ div {text-align: center;}
 </head>
 <body style="background-color:lavender;">
 
+
 <h2><p style="font-family:'Courier New'">Sign Up For Your Anime List!</p></h2>
+
 <form action="/signup" method="POST">
+
+            <%= @error%><br>
+
   <label>Username: </label>
   <input type="text" name="username"><br>
   <label>Email: </label>
