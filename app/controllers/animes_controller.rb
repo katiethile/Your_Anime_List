@@ -55,7 +55,6 @@ class AnimesController < ApplicationController
         @anime = Anime.find_by_id(params[:id])
         if current_user == @anime.user
             @anime.update(params.except(:_method, :id))
-            flash[:message] = "Successfully created anime."
         redirect to '/animes'
         end 
     end 

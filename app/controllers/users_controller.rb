@@ -15,7 +15,7 @@ class UsersController < ApplicationController
           session[:user_id] = user.id
           redirect to "/animes"
         else
-            @error = "You inputted invalid fields for username, email and password"
+            @error = "You inputted invalid fields for Username, Email and Password; or Username/Email is already taken."
           erb :'users/signup'
         end
     end
@@ -34,7 +34,7 @@ class UsersController < ApplicationController
           session[:user_id] = user.id
           redirect to "/animes"
     else 
-        @error = "You inputted invalid fields for username or password"
+        @error = "You inputted in invalid fields for username or password"
         erb :'users/login'
     end 
 end 
