@@ -21,7 +21,7 @@ class AnimesController < ApplicationController
     end 
 
     post '/animes' do 
-        redirect '/login' unless is_logged_in?
+        is_logged_in?
         if !params[:name].empty?
         @anime = Anime.create(:name => params[:name], :status => params[:status], :rating => params[:rating])
             @anime.user = current_user
