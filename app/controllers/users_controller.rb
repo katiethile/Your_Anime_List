@@ -1,6 +1,4 @@
 class UsersController < ApplicationController
-    
-
     get '/signup' do 
         if is_logged_in?
             redirect to '/animes'

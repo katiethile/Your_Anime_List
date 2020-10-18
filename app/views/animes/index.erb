@@ -2,6 +2,11 @@
 <html>
 <head>
 <style>
+
+a:hover {
+  background-color:#BDA0CB;
+}
+
 h1 {text-align: center;}
 p {text-align: center;}
 div {text-align: center;}
@@ -13,13 +18,12 @@ div {text-align: center;}
 <h3>Your Anime List!</h3>
 
 <% @animes.each do |anime| %>
-  <%= anime.name %>
-  <a href="/animes/<%=anime.id%>">View anime</a>
+<p style="border:3px; border-style:solid; border-color:#BDA0CB; padding: 1em;">  <%= anime.name %>
   (Watch Status: <%=anime.status%>)
   (Rating: <%=anime.rating%>)
-  <br>
+    <a href="/animes/<%=anime.id%>">View anime</a></p>
 
-    <% end %>
+    <% end %><br>
 
 <a href="/animes/new">New Anime</a><br>
  <a href="/logout">Log Out</a><br>

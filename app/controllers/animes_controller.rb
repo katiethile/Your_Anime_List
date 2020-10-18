@@ -38,7 +38,7 @@ class AnimesController < ApplicationController
         if is_logged_in?
             erb :'animes/show'
         else
-        redirect to '/'
+            redirect '/animes'
         end 
     end 
 
@@ -55,8 +55,8 @@ class AnimesController < ApplicationController
         @anime = Anime.find_by_id(params[:id])
         if current_user == @anime.user
             @anime.update(params.except(:_method, :id))
-        redirect to '/animes'
-        end 
+        redirect '/animes'            
+        end  
     end 
 
     delete '/animes/:id' do
