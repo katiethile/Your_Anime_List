@@ -24,12 +24,13 @@ class AnimesController < ApplicationController
         is_logged_in?
         if !params[:name].empty?
         @anime = Anime.create(:name => params[:name], :status => params[:status], :rating => params[:rating])
+        flash[:success] = "You have successfully created a new anime!"
             @anime.user = current_user
             @anime.save
-             redirect to "/animes/#{@anime.id}" 
+             redirect "/animes/#{@anime.id}" 
         else 
-            @error = "You inputted in a blank field for anime name"
-            erb :'animes/new'
+            flash[:error] = "You inputted in a blank field for anime name"
+            redirect '/animes/new'
         end 
     end 
 
@@ -55,6 +56,7 @@ class AnimesController < ApplicationController
         @anime = Anime.find_by_id(params[:id])
         if current_user == @anime.user
             @anime.update(params.except(:_method, :id))
+            flash[:success] = "You have successfully edit your anime!"
         redirect '/animes'            
         end  
     end 
@@ -63,6 +65,7 @@ class AnimesController < ApplicationController
         @anime = Anime.find_by_id(params[:id])
         if current_user == @anime.user
             @anime.delete
+            flash[:error] = "You have successfully deleted your anime!"
         redirect to '/animes'
         end 
     end 

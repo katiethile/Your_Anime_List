@@ -15,7 +15,12 @@ div {text-align: center;}
 <body style="background-color:lavender;">
 
 <h1>Log in to Your Anime List!</h1>
-           <p style="color:#FF0000";><%= @error%></p>
+
+<% flash_types.select{ |kind| flash.has?(kind) }.each do |kind| %>
+<div class="flash <%= kind %>">
+  <h3><p style="border:3px; border-style:solid; border-color:#FF0000; padding: 1em; color:#FF0000";><%= flash[kind] %></p></h3>
+</div>
+<% end %>
 
 <form action="/login" method="POST">
   <label>Username: </label>

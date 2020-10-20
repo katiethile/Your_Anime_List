@@ -17,6 +17,13 @@ div {text-align: center;}
 <h1>Hello, <%=@user.username%></h1>
 <h3>Your Anime List!</h3>
 
+
+<% flash_types.select{ |kind| flash.has?(kind) }.each do |kind| %>
+<div class="flash <%= kind %>">
+  <h3><p style="border:3px; border-style:solid; border-color:#008000; padding: 1em; color:#008000";><%= flash[kind] %></p></h3>
+</div>
+<% end %>
+
 <% @animes.each do |anime| %>
 <p style="border:3px; border-style:solid; border-color:#BDA0CB; padding: 1em;">  <%= anime.name %>
   (Watch Status: <%=anime.status%>)
