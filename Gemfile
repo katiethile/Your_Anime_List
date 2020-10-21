@@ -13,7 +13,6 @@ gem 'bcrypt'
 gem 'tux'
 gem 'rack-flash3'
 gem 'rack-flash', '0.1.2'
-gem 'colorize', '~> 0.8.1'
 
 group :test do
   gem 'rspec'
