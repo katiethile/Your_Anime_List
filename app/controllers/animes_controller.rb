@@ -11,7 +11,6 @@ class AnimesController < ApplicationController
     end
 
     get '/animes/new' do 
-        @anime = Anime.find_by_id(params[:id])
         if is_logged_in?
             @user = current_user
         erb :'animes/new'
@@ -21,7 +20,7 @@ class AnimesController < ApplicationController
     end 
 
     post '/animes' do 
-        is_logged_in?
+        redirect '/login' unless is_logged_in?
         if !params[:name].empty?
         @anime = Anime.create(:name => params[:name], :status => params[:status], :rating => params[:rating])
         flash[:success] = "You have successfully created a new anime!"
