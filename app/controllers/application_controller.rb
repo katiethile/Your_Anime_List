@@ -19,15 +19,21 @@ class ApplicationController < Sinatra::Base
 
   helpers do
     def current_user
-      User.find(session[:user_id]) #returns the instance of the logged in user, based on the session[:user_id]
+      User.find(session[:user_id]) 
     end 
 
+    def anime_user 
+      if @anime.user != current_user 
+        redirect "/animes"
+      end 
+  end
+
     def flash_types
-      [:success, :notice, :warning, :error] #flash warning types that will be used in views and controllers 
+      [:success, :notice, :warning, :error] 
     end
 
     def is_logged_in?
-        !!session[:user_id] #returns true or false based on the presence of a session[:user_id]
+        !!session[:user_id] 
     end
   end 
 end 

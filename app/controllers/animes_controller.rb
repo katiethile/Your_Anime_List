@@ -21,13 +21,12 @@ class AnimesController < ApplicationController
 
     post '/animes' do 
         redirect '/login' unless is_logged_in?
-        if !params[:name].empty? #checking if name hash isn't empty for when user creates an anime
+        if !params[:name].empty? 
         @anime = Anime.create(:name => params[:name], :status => params[:status], :rating => params[:rating])
-        #creating anime instance based on provided params hash
         flash[:success] = "You have successfully created a new anime!"
-            @anime.user = current_user #making sure that the current user is the one that has access to the anime created
+            @anime.user = current_user 
             @anime.save
-             redirect "/animes/#{@anime.id}" #redirect to show page if successfully create new anime 
+             redirect "/animes/#{@anime.id}"
         else 
             flash[:error] = "You inputted in a blank field for anime name"
             redirect '/animes/new'
@@ -44,11 +43,10 @@ class AnimesController < ApplicationController
     end 
 
     get '/animes/:id/edit' do 
-       if is_logged_in?
+       if is_logged_in?  
         @anime = Anime.find_by_id(params[:id])
+        anime_user 
         erb :'animes/edit'
-        else
-           redirect to '/' 
         end
     end 
 
@@ -60,7 +58,7 @@ class AnimesController < ApplicationController
         redirect '/animes'   
         else 
             flash[:error] = "You have inputted a blank field for name."
-            redirect to "/animes/#{params[:id]}/edit"
+            redirect to "/animes/#{params[:id]}/edit" 
         end  
     end 
 
