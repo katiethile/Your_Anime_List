@@ -2,12 +2,18 @@
 
 <img src="https://media1.tenor.com/images/d3db2251496c034939206aedeb304386/tenor.gif?itemid=5827691" alt="dizzy_anime_gif">
 
+<% flash_types.select{ |kind| flash.has?(kind) }.each do |kind| %>
+<div class="flash <%= kind %>">
+  <h3><p style="border:3px; border-style:solid; border-color:#FF0000; padding: 1em; color:#FF0000";><%= flash[kind] %></p></h3>
+</div>
+<% end %>
+
 <form method="post" action="/animes/<%= @anime.id %>">
 <input type="hidden" id="hidden" name="_method" value="patch">
     Anime:
     <input type="text" name="name" value="<%=@anime.name%>"><br>
 
- <label for="status">Status:</label>
+ <label for="status">Watch Status:</label>
 
 <select name="status" id="status" value="<%=@anime.status%>">
 
