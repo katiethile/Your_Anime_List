@@ -45,6 +45,7 @@ class AnimesController < ApplicationController
     get '/animes/:id/edit' do 
        if is_logged_in?  
         @anime = Anime.find_by_id(params[:id])
+        flash[:error] = "You can't edit another users' anime"
         anime_user 
         erb :'animes/edit'
         end
@@ -66,8 +67,10 @@ class AnimesController < ApplicationController
         @anime = Anime.find_by_id(params[:id])
         if current_user == @anime.user
             @anime.delete
-            flash[:error] = "You have successfully deleted your anime!"
         redirect to '/animes'
+        else 
+            flash[:error] = "You can't delete another users' anime"
+            anime_user
         end 
     end 
 end 
