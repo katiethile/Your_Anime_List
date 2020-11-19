@@ -24,7 +24,7 @@ class ApplicationController < Sinatra::Base
 
     def anime_user 
       if @anime.user != current_user 
-        redirect "/animes"
+        redirect "/"
       end 
   end
 
